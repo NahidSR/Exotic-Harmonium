@@ -1,0 +1,1646 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     71628,       1638]
+NotebookOptionsPosition[     71189,       1622]
+NotebookOutlinePosition[     71671,       1640]
+CellTagsIndexPosition[     71628,       1637]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Do", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"\[Omega]", ",", "\"\<   \>\"", ",", 
+       RowBox[{"NUMlist", "[", "\[Omega]", "]"}]}], "]"}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Clear", "[", 
+         RowBox[{
+         "fname", ",", "fdata", ",", "NUMf", ",", "VARf", ",", "HFf", ",", 
+          "df"}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"importing", " ", "f", " ", "data"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"SetDirectory", "[", 
+         RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"SetDirectory", "[", "\"\<fdata\>\"", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"fname", "=", 
+         RowBox[{
+          RowBox[{"StringTemplate", "[", "\"\<f_m=`1`-w=`2`.txt\>\"", "]"}], 
+          "[", 
+          RowBox[{"mp", ",", "\[Omega]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"fdata", "=", 
+         RowBox[{"Import", "[", 
+          RowBox[{"fname", ",", "\"\<Lines\>\""}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"NUMf", "=", 
+         RowBox[{"ToExpression", "[", 
+          RowBox[{"fdata", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"VARf", "=", 
+         RowBox[{"ToExpression", "[", 
+          RowBox[{"fdata", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"HFf", "=", 
+         RowBox[{"ToExpression", "[", 
+          RowBox[{"fdata", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"df", "=", 
+         RowBox[{"ToExpression", "[", 
+          RowBox[{"fdata", "[", 
+           RowBox[{"[", "4", "]"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"NUMset1", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"NUMf", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "NUMf", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"NUMset2", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"NUMf", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "NUMf", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"NUMlist", "[", "mp", "]"}], "=", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"NUMset2", ",", "NUMset1"}], "}"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"VARset1", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"VARf", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "VARf", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"VARset2", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"VARf", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "VARf", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"VARlist", "[", "mp", "]"}], "=", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"VARset2", ",", "VARset1"}], "}"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"HFset1", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"HFf", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "HFf", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"HFset2", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"HFf", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "HFf", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"HFlist", "[", "mp", "]"}], "=", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"HFset2", ",", "HFset1"}], "}"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"DFset1", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"df", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "df", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"DFset2", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"df", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "df", "]"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"DFlist", "[", "mp", "]"}], "=", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"DFset2", ",", "DFset1"}], "}"}], "]"}]}], ";"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"mp", ",", 
+         RowBox[{"{", 
+          RowBox[{
+          "1", ",", "1.5", ",", "2", ",", "3", ",", "10", ",", "50", ",", 
+           "207", ",", "400", ",", "900", ",", "1836"}], "}"}]}], "}"}]}], 
+      "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"NUMfplot", "[", "\[Omega]", "]"}], "=", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NUMlist", "[", "1", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "1.5", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "2", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "3", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "10", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "50", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "207", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "400", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "900", "]"}], ",", 
+          RowBox[{"NUMlist", "[", "1836", "]"}]}], "}"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<m=1\>\"", ",", "\"\<m=1.5\>\"", ",", "\"\<m=2\>\"", ",", 
+           "\"\<m=3\>\"", ",", "\"\<m=10\>\"", ",", "\"\<m=50\>\"", ",", 
+           "\"\<m=207\>\"", ",", "\"\<m=400\>\"", ",", "\"\<m=900\>\"", ",", 
+           "\"\<m=1836\>\""}], "}"}]}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+        RowBox[{"PlotMarkers", "->", 
+         RowBox[{"{", "Automatic", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"Thickness", "[", "0.001", "]"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"VARfplot", "[", "\[Omega]", "]"}], "=", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"VARlist", "[", "1", "]"}], ",", 
+          RowBox[{"VARlist", "[", "1.5", "]"}], ",", 
+          RowBox[{"VARlist", "[", "2", "]"}], ",", 
+          RowBox[{"VARlist", "[", "3", "]"}], ",", 
+          RowBox[{"VARlist", "[", "10", "]"}], ",", 
+          RowBox[{"VARlist", "[", "50", "]"}], ",", 
+          RowBox[{"VARlist", "[", "207", "]"}], ",", 
+          RowBox[{"VARlist", "[", "400", "]"}], ",", 
+          RowBox[{"VARlist", "[", "900", "]"}], ",", 
+          RowBox[{"VARlist", "[", "1836", "]"}]}], "}"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<m=1\>\"", ",", "\"\<m=1.5\>\"", ",", "\"\<m=2\>\"", ",", 
+           "\"\<m=3\>\"", ",", "\"\<m=10\>\"", ",", "\"\<m=50\>\"", ",", 
+           "\"\<m=207\>\"", ",", "\"\<m=400\>\"", ",", "\"\<m=900\>\"", ",", 
+           "\"\<m=1836\>\""}], "}"}]}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+        RowBox[{"PlotMarkers", "->", 
+         RowBox[{"{", "Automatic", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"Thickness", "[", "0.001", "]"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"HFfplot", "[", "\[Omega]", "]"}], "=", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"HFlist", "[", "1", "]"}], ",", 
+          RowBox[{"HFlist", "[", "1.5", "]"}], ",", 
+          RowBox[{"HFlist", "[", "2", "]"}], ",", 
+          RowBox[{"HFlist", "[", "3", "]"}], ",", 
+          RowBox[{"HFlist", "[", "10", "]"}], ",", 
+          RowBox[{"HFlist", "[", "50", "]"}], ",", 
+          RowBox[{"HFlist", "[", "207", "]"}], ",", 
+          RowBox[{"HFlist", "[", "400", "]"}], ",", 
+          RowBox[{"HFlist", "[", "900", "]"}], ",", 
+          RowBox[{"HFlist", "[", "1836", "]"}]}], "}"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<m=1\>\"", ",", "\"\<m=1.5\>\"", ",", "\"\<m=2\>\"", ",", 
+           "\"\<m=3\>\"", ",", "\"\<m=10\>\"", ",", "\"\<m=50\>\"", ",", 
+           "\"\<m=207\>\"", ",", "\"\<m=400\>\"", ",", "\"\<m=900\>\"", ",", 
+           "\"\<m=1836\>\""}], "}"}]}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+        RowBox[{"PlotMarkers", "->", 
+         RowBox[{"{", "Automatic", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"Thickness", "[", "0.001", "]"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"DFfplot", "[", "\[Omega]", "]"}], "=", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"DFlist", "[", "1", "]"}], ",", 
+          RowBox[{"DFlist", "[", "1.5", "]"}], ",", 
+          RowBox[{"DFlist", "[", "2", "]"}], ",", 
+          RowBox[{"DFlist", "[", "3", "]"}], ",", 
+          RowBox[{"DFlist", "[", "10", "]"}], ",", 
+          RowBox[{"DFlist", "[", "50", "]"}], ",", 
+          RowBox[{"DFlist", "[", "207", "]"}], ",", 
+          RowBox[{"DFlist", "[", "400", "]"}], ",", 
+          RowBox[{"DFlist", "[", "900", "]"}], ",", 
+          RowBox[{"DFlist", "[", "1836", "]"}]}], "}"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<m=1\>\"", ",", "\"\<m=1.5\>\"", ",", "\"\<m=2\>\"", ",", 
+           "\"\<m=3\>\"", ",", "\"\<m=10\>\"", ",", "\"\<m=50\>\"", ",", 
+           "\"\<m=207\>\"", ",", "\"\<m=400\>\"", ",", "\"\<m=900\>\"", ",", 
+           "\"\<m=1836\>\""}], "}"}]}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+        RowBox[{"PlotMarkers", "->", 
+         RowBox[{"{", "Automatic", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"Thickness", "[", "0.001", "]"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"NUMnamef", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<NUMf_plot-w=`1`.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"VARnamef", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<VARf_plot-w=`1`.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"HFnamef", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<HFf_plot-w=`1`.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"DFnamef", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<DFf_plot-w=`1`.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"NUMnamef2", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<NUMf_plot-w=`1`_2.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"VARnamef2", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<VARf_plot-w=`1`_2.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"HFnamef2", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<HFf_plot-w=`1`_2.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"DFnamef2", "=", 
+      RowBox[{
+       RowBox[{"StringTemplate", "[", "\"\<DFf_plot-w=`1`_2.PNG\>\"", "]"}], 
+       "[", "\[Omega]", "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"SetDirectory", "[", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"SetDirectory", "[", "\"\<All-f_plots\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"NUMnamef", ",", 
+       RowBox[{"NUMfplot", "[", "\[Omega]", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"VARnamef", ",", 
+       RowBox[{"VARfplot", "[", "\[Omega]", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"HFnamef", ",", 
+       RowBox[{"HFfplot", "[", "\[Omega]", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"DFnamef", ",", 
+       RowBox[{"DFfplot", "[", "\[Omega]", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"NUMnamef2", ",", 
+       RowBox[{
+        RowBox[{"NUMfplot", "[", "\[Omega]", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"VARnamef2", ",", 
+       RowBox[{
+        RowBox[{"VARfplot", "[", "\[Omega]", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"HFnamef2", ",", 
+       RowBox[{
+        RowBox[{"HFfplot", "[", "\[Omega]", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{"DFnamef2", ",", 
+       RowBox[{
+        RowBox[{"DFfplot", "[", "\[Omega]", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]",
+     "\[IndentingNewLine]", "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Omega]", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "0.0001", ",", "0.001", ",", "0.01", ",", "0.1", ",", "1", ",", "10", 
+        ",", "100", ",", "1000", ",", "10000"}], "}"}]}], "}"}]}], "]"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<grid_F\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NUMImages", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "0.0001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "0.001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "0.01", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "0.1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "10", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "100", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "1000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"NUMfplot", "[", "10000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"VARImages", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"VARfplot", "[", "0.0001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "0.001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "0.01", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "0.1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "10", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "100", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "1000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"VARfplot", "[", "10000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HFImages", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"HFfplot", "[", "0.0001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "0.001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "0.01", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "0.1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "10", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "100", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "1000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"HFfplot", "[", "10000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DFImages", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"DFfplot", "[", "0.0001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "0.001", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "0.01", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "0.1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "1", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "10", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "100", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "1000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"DFfplot", "[", "10000", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"labels", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\"\<Plot \>\"", "<>", 
+       RowBox[{"ToString", "[", "#", "]"}]}], "&"}], "/@", 
+     RowBox[{"Range", "@", 
+      RowBox[{"Length", "@", "plotImages"}]}]}]}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"labels", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<\[Omega] = 0.0001\>\"", ",", "\"\<\[Omega] = 0.001\>\"", ",", 
+     "\"\<\[Omega] = 0.01\>\"", ",", "\"\<\[Omega] = 0.1\>\"", ",", 
+     "\"\<\[Omega] = 1\>\"", ",", "\"\<\[Omega] = 10\>\"", ",", 
+     "\"\<\[Omega] = 100\>\"", ",", "\"\<\[Omega] = 1000\>\"", ",", 
+     "\"\<\[Omega] = 10000\>\""}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"position", "=", 
+    RowBox[{"{", 
+     RowBox[{"0.75", ",", "0.9"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"NUMlabeled", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"{", "#1", "}"}], ",", 
+        RowBox[{"Epilog", "->", 
+         RowBox[{"Inset", "[", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"#2", ",", "Black", ",", "Bold", ",", "20"}], "]"}], 
+              "]"}], "}"}], "]"}], ",", 
+           RowBox[{"Scaled", "[", "position", "]"}]}], "]"}]}], ",", 
+        RowBox[{"ImageSize", "->", "Large"}]}], "]"}], "&"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"NUMImages", ",", "labels"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NUMgrid", "=", 
+    RowBox[{
+     RowBox[{"NUMlabeled", "//", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"UpTo", "@", "3"}]}], "]"}], "&"}]}], "//", 
+     RowBox[{
+      RowBox[{"Grid", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"Alignment", "->", "Top"}]}], "]"}], "&"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"VARlabeled", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"{", "#1", "}"}], ",", 
+        RowBox[{"Epilog", "->", 
+         RowBox[{"Inset", "[", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"#2", ",", "Black", ",", "Bold", ",", "20"}], "]"}], 
+              "]"}], "}"}], "]"}], ",", 
+           RowBox[{"Scaled", "[", "position", "]"}]}], "]"}]}], ",", 
+        RowBox[{"ImageSize", "->", "Large"}]}], "]"}], "&"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"VARImages", ",", "labels"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"VARgrid", "=", 
+    RowBox[{
+     RowBox[{"VARlabeled", "//", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"UpTo", "@", "3"}]}], "]"}], "&"}]}], "//", 
+     RowBox[{
+      RowBox[{"Grid", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"Alignment", "->", "Top"}]}], "]"}], "&"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HFlabeled", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"{", "#1", "}"}], ",", 
+        RowBox[{"Epilog", "->", 
+         RowBox[{"Inset", "[", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"#2", ",", "Black", ",", "Bold", ",", "20"}], "]"}], 
+              "]"}], "}"}], "]"}], ",", 
+           RowBox[{"Scaled", "[", "position", "]"}]}], "]"}]}], ",", 
+        RowBox[{"ImageSize", "->", "Large"}]}], "]"}], "&"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"HFImages", ",", "labels"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HFgrid", "=", 
+    RowBox[{
+     RowBox[{"HFlabeled", "//", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"UpTo", "@", "3"}]}], "]"}], "&"}]}], "//", 
+     RowBox[{
+      RowBox[{"Grid", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"Alignment", "->", "Top"}]}], "]"}], "&"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DFlabeled", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"{", "#1", "}"}], ",", 
+        RowBox[{"Epilog", "->", 
+         RowBox[{"Inset", "[", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"#2", ",", "Black", ",", "Bold", ",", "20"}], "]"}], 
+              "]"}], "}"}], "]"}], ",", 
+           RowBox[{"Scaled", "[", "position", "]"}]}], "]"}]}], ",", 
+        RowBox[{"ImageSize", "->", "Large"}]}], "]"}], "&"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"DFImages", ",", "labels"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DFgrid", "=", 
+    RowBox[{
+     RowBox[{"DFlabeled", "//", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"UpTo", "@", "3"}]}], "]"}], "&"}]}], "//", 
+     RowBox[{
+      RowBox[{"Grid", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"Alignment", "->", "Top"}]}], "]"}], "&"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"leg", "=", 
+    RowBox[{"LineLegend", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.006944444444444445`", "]"}], ",", 
+          RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", "Black"}], 
+         "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<m=1\>\"", ",", "\"\<m=1.5\>\"", ",", "\"\<m=2\>\"", ",", 
+        "\"\<m=3\>\"", ",", "\"\<m=10\>\"", ",", "\"\<m=50\>\"", ",", 
+        "\"\<m=207\>\"", ",", "\"\<m=400\>\"", ",", "\"\<m=900\>\"", ",", 
+        "\"\<m=1836\>\""}], "}"}], ",", 
+      RowBox[{"LegendMarkers", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "None", "]"}], ",", 
+              RowBox[{"Disk", "[", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"Offset", "[", "6.272`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "None", "]"}], ",", 
+              InterpretationBox[
+               RowBox[{
+                TagBox["Polygon",
+                 "SummaryHead"], "[", 
+                
+                DynamicModuleBox[{Typeset`open$$ = False, 
+                 Typeset`embedState$$ = "Ready", Typeset`spolygon$$ = 
+                 Polygon[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}, 
+                 TemplateBox[{
+                   PaneSelectorBox[{False -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxOpener"]], 
+                    ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}, 
+                    ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["4", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}], True -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxCloser"]], 
+                    ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}, 
+                    ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["4", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Quiet[
+                    Apply[Region`PolygonDump`polygonType, 
+                    Region`PolygonDump`computeType[Typeset`spolygon$$]]], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iRegionBounds[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Area: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iArea[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, 
+                    Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+                  "SummaryPanel"],
+                 DynamicModuleValues:>{}], "]"}],
+               Polygon[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}],
+               Editable->False,
+               SelectWithContents->True,
+               Selectable->False]}], "}"}], "]"}], ",", 
+           RowBox[{"Offset", "[", "6.72`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "None", "]"}], ",", 
+              InterpretationBox[
+               RowBox[{
+                TagBox["Polygon",
+                 "SummaryHead"], "[", 
+                
+                DynamicModuleBox[{Typeset`open$$ = False, 
+                 Typeset`embedState$$ = "Ready", Typeset`spolygon$$ = 
+                 Polygon[{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}]}, 
+                 TemplateBox[{
+                   PaneSelectorBox[{False -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxOpener"]], 
+                    ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}]}, 
+                    ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["4", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}], True -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxCloser"]], 
+                    ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}]}, 
+                    ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["4", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Quiet[
+                    Apply[Region`PolygonDump`polygonType, 
+                    Region`PolygonDump`computeType[Typeset`spolygon$$]]], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iRegionBounds[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Area: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iArea[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, 
+                    Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+                  "SummaryPanel"],
+                 DynamicModuleValues:>{}], "]"}],
+               Polygon[{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}],
+               Editable->False,
+               SelectWithContents->True,
+               Selectable->False]}], "}"}], "]"}], ",", 
+           RowBox[{"Offset", "[", "8.16`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "None", "]"}], ",", 
+              InterpretationBox[
+               RowBox[{
+                TagBox["Polygon",
+                 "SummaryHead"], "[", 
+                
+                DynamicModuleBox[{Typeset`open$$ = False, 
+                 Typeset`embedState$$ = "Ready", Typeset`spolygon$$ = 
+                 Polygon[{{0, 1}, {-1, 1 - 3^Rational[1, 2]}, {
+                   1, 1 - 3^Rational[1, 2]}}]}, 
+                 TemplateBox[{
+                   PaneSelectorBox[{False -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxOpener"]], 
+                    ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[
+                    
+                    NCache[{{0, 1}, {-1, 1 - 3^Rational[1, 2]}, {
+                    1, 1 - 3^Rational[1, 2]}}, {{0, 
+                    1}, {-1, -0.7320508075688772}, {
+                    1, -0.7320508075688772}}]]}, ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["3", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}], True -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxCloser"]], 
+                    ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[
+                    
+                    NCache[{{0, 1}, {-1, 1 - 3^Rational[1, 2]}, {
+                    1, 1 - 3^Rational[1, 2]}}, {{0, 
+                    1}, {-1, -0.7320508075688772}, {
+                    1, -0.7320508075688772}}]]}, ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["3", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Quiet[
+                    Apply[Region`PolygonDump`polygonType, 
+                    Region`PolygonDump`computeType[Typeset`spolygon$$]]], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iRegionBounds[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Area: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iArea[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, 
+                    Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+                  "SummaryPanel"],
+                 DynamicModuleValues:>{}], "]"}],
+               
+               Polygon[{{0, 1}, {-1, 1 - 3^Rational[1, 2]}, {
+                 1, 1 - 3^Rational[1, 2]}}],
+               Editable->False,
+               SelectWithContents->True,
+               Selectable->False]}], "}"}], "]"}], ",", 
+           RowBox[{"Offset", "[", "7.6`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "None", "]"}], ",", 
+              InterpretationBox[
+               RowBox[{
+                TagBox["Polygon",
+                 "SummaryHead"], "[", 
+                
+                DynamicModuleBox[{Typeset`open$$ = False, 
+                 Typeset`embedState$$ = "Ready", Typeset`spolygon$$ = 
+                 Polygon[{{0, -1}, {-1, -1 + 3^Rational[1, 2]}, {
+                   1, -1 + 3^Rational[1, 2]}}]}, 
+                 TemplateBox[{
+                   PaneSelectorBox[{False -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxOpener"]], 
+                    ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[
+                    
+                    NCache[{{0, -1}, {-1, -1 + 3^Rational[1, 2]}, {
+                    1, -1 + 3^Rational[1, 2]}}, {{
+                    0, -1}, {-1, 0.7320508075688772}, {
+                    1, 0.7320508075688772}}]]}, ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["3", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}], True -> GridBox[{{
+                    PaneBox[
+                    ButtonBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxCloser"]], 
+                    ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                    None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                    "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                    Dynamic[{Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    GraphicsBox[{
+                    Directive[
+                    Hue[0.6, 0.3, 0.85], 
+                    EdgeForm[
+                    Hue[0.6, 0.3, 0.85]]], 
+                    PolygonBox[
+                    
+                    NCache[{{0, -1}, {-1, -1 + 3^Rational[1, 2]}, {
+                    1, -1 + 3^Rational[1, 2]}}, {{
+                    0, -1}, {-1, 0.7320508075688772}, {
+                    1, 0.7320508075688772}}]]}, ImageSize -> 
+                    Dynamic[{5.25, 3.5} (CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification])]], 
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["3", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Embedding dimension: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Quiet[
+                    Apply[Region`PolygonDump`polygonType, 
+                    Region`PolygonDump`computeType[Typeset`spolygon$$]]], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iRegionBounds[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Area: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    DynamicBox[
+                    ToBoxes[
+                    Region`PolygonDump`iArea[Typeset`spolygon$$], 
+                    StandardForm], SynchronousUpdating -> False, 
+                    TrackedSymbols :> {}, CachedValue :> 
+                    AnimatorBox[0, {0, Infinity}, AppearanceElements -> 
+                    "ProgressSlider", ImageSize -> 20]], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, 
+                    Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+                  "SummaryPanel"],
+                 DynamicModuleValues:>{}], "]"}],
+               
+               Polygon[{{0, -1}, {-1, -1 + 3^Rational[1, 2]}, {
+                 1, -1 + 3^Rational[1, 2]}}],
+               Editable->False,
+               SelectWithContents->True,
+               Selectable->False]}], "}"}], "]"}], ",", 
+           RowBox[{"Offset", "[", "7.68`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"Circle", "[", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"Offset", "[", "7.168`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", 
+               RowBox[{"Thickness", "[", "Medium", "]"}], "]"}], ",", 
+              RowBox[{"FaceForm", "[", "None", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", 
+                   RowBox[{"-", "1"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"-", "1"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "1"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", 
+                   RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"Offset", "[", "7.168`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", 
+               RowBox[{"Thickness", "[", "Medium", "]"}], "]"}], ",", 
+              RowBox[{"FaceForm", "[", "None", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"Offset", "[", "8.704`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", 
+               RowBox[{"Thickness", "[", "Medium", "]"}], "]"}], ",", 
+              RowBox[{"FaceForm", "[", "None", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", 
+                   RowBox[{"1", "-", 
+                    SqrtBox["3"]}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"1", "-", 
+                    SqrtBox["3"]}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"Offset", "[", "8.192`", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", 
+               RowBox[{"Thickness", "[", "Medium", "]"}], "]"}], ",", 
+              RowBox[{"FaceForm", "[", "None", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", 
+                   RowBox[{
+                    RowBox[{"-", "1"}], "+", 
+                    SqrtBox["3"]}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", 
+                   RowBox[{
+                    RowBox[{"-", "1"}], "+", 
+                    SqrtBox["3"]}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"Offset", "[", "8.192`", "]"}]}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"Joined", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", 
+         "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+        "}"}]}], ",", 
+      RowBox[{"LegendLayout", "\[Rule]", "\"\<Row\>\""}], ",", 
+      RowBox[{"LegendMargins", "->", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"10", ",", "10"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"10", ",", "10"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "->", 
+       RowBox[{"{", 
+        RowBox[{"1500", ",", "25"}], "}"}]}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NUMgridleg", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "NUMgrid", "}"}], ",", 
+      RowBox[{"{", "leg", "}"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"VARgridleg", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "VARgrid", "}"}], ",", 
+      RowBox[{"{", "leg", "}"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HFgridleg", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "HFgrid", "}"}], ",", 
+      RowBox[{"{", "leg", "}"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DFgridleg", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", "DFgrid", "}"}], ",", 
+       RowBox[{"{", "leg", "}"}]}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<NUMF_grid.PNG\>\"", ",", "NUMgridleg"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<VARF_grid.PNG\>\"", ",", "VARgridleg"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<HFF_grid.PNG\>\"", ",", "HFgridleg"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<DFF_grid.PNG\>\"", ",", "DFgridleg"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.843522896673224*^9, 3.8435230143776426`*^9}, {
+   3.843523340380821*^9, 3.8435233421708846`*^9}, {3.84352338621812*^9, 
+   3.8435234274639773`*^9}, {3.843523563902462*^9, 3.8435237039080143`*^9}, {
+   3.8435238295679874`*^9, 3.843523861029473*^9}, {3.8435238946595*^9, 
+   3.843523899859537*^9}, {3.843523939799217*^9, 3.8435239565996885`*^9}, {
+   3.8435239887291174`*^9, 3.8435239923204813`*^9}, {3.8435242642234945`*^9, 
+   3.8435244842959948`*^9}, {3.84352791896419*^9, 3.843527921492967*^9}, {
+   3.8435279546442547`*^9, 3.8435281036625795`*^9}, {3.8435281806457057`*^9, 
+   3.8435281818645563`*^9}, {3.843528219173254*^9, 3.8435283338050766`*^9}, {
+   3.843528369882414*^9, 3.8435283749205284`*^9}, {3.8435284673140287`*^9, 
+   3.8435285024488144`*^9}, {3.843528560044029*^9, 3.843528565873707*^9}, {
+   3.843528617696086*^9, 3.8435286389244747`*^9}, {3.8435287661698494`*^9, 
+   3.843528767353483*^9}, {3.8435289255319586`*^9, 3.8435289283750825`*^9}, {
+   3.843529102789069*^9, 3.8435292567270684`*^9}, 3.843529345522682*^9, {
+   3.8435294045477977`*^9, 3.8435294051171646`*^9}, {3.8435295968713655`*^9, 
+   3.843529605598181*^9}, {3.8435298870330067`*^9, 3.843529898065054*^9}, {
+   3.843529949921627*^9, 3.843529951969675*^9}, {3.8435300819216957`*^9, 
+   3.8435300861111465`*^9}, {3.8435301221489472`*^9, 3.843530144023689*^9}, {
+   3.843530192283839*^9, 3.8435301943013053`*^9}, {3.8435303126149817`*^9, 
+   3.843530313848789*^9}, {3.8435303865092616`*^9, 3.843530412784769*^9}, {
+   3.84353052455136*^9, 3.8435305359572215`*^9}, {3.843530583235512*^9, 
+   3.843530589817159*^9}, {3.843531079298997*^9, 3.843531081032996*^9}, {
+   3.843536283968527*^9, 3.8435362971096*^9}, {3.8435364341601253`*^9, 
+   3.843536454010475*^9}, {3.843536601426654*^9, 3.8435366587763014`*^9}, {
+   3.8435387910061097`*^9, 3.8435388241660156`*^9}, {3.8435388636987247`*^9, 
+   3.8435390176591687`*^9}, {3.8435404806879597`*^9, 3.843540531951504*^9}, {
+   3.8439165184934053`*^9, 3.84391654739359*^9}, {3.843916642577547*^9, 
+   3.8439166616426044`*^9}, 3.8439167081533313`*^9, {3.843916739134575*^9, 
+   3.8439167668147526`*^9}, {3.843916861224698*^9, 3.8439169116673965`*^9}, {
+   3.8439170335141964`*^9, 3.8439170794530334`*^9}, {3.8439176189083157`*^9, 
+   3.8439176255260057`*^9}, {3.8439507020389585`*^9, 3.843950710877783*^9}, {
+   3.8439508300036273`*^9, 3.8439509231608286`*^9}, {3.843950984765644*^9, 
+   3.8439510070313025`*^9}, {3.8439512327916136`*^9, 3.843951318830452*^9}, {
+   3.843951381333516*^9, 3.8439514106103153`*^9}, {3.8439514929787984`*^9, 
+   3.843951767354641*^9}, 3.8439518460925913`*^9, {3.8439519077100987`*^9, 
+   3.843951916687837*^9}, {3.8439522958973713`*^9, 3.843952309864149*^9}, 
+   3.843952355243054*^9, {3.843952393669215*^9, 3.843952416356293*^9}, {
+   3.8439524624655085`*^9, 3.84395252859366*^9}, {3.843952715256445*^9, 
+   3.8439527755651665`*^9}, {3.843952822209951*^9, 3.8439528223356204`*^9}, {
+   3.84396036406561*^9, 3.843960489033569*^9}, {3.843960677152567*^9, 
+   3.8439607135320444`*^9}, {3.8439607435646334`*^9, 3.8439607459450226`*^9}, 
+   3.8439608727676115`*^9, 3.8439611112369585`*^9, 
+   3.8439611594378567`*^9},ExpressionUUID->"db9cf9f4-da64-481a-b98b-\
+f449e35f5331"]
+},
+WindowSize->{962.25, 642.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules->Association["TryRealOnly" -> False],
+Magnification:>1. Inherited,
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (June 19, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"931b6fdf-3688-46c1-bbdb-8365213fcbee"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 70627, 1600, 3211, "Input",ExpressionUUID->"db9cf9f4-da64-481a-b98b-f449e35f5331"]
+}
+]
+*)
+
